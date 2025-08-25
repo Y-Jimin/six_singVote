@@ -1,0 +1,298 @@
+.location-settings {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.location-settings-header {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f1f3f4;
+}
+
+.location-settings-header h3 {
+  color: #333;
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.location-settings-header p {
+  color: #666;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.location-settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 설정 그룹 */
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.setting-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.location-input {
+  padding: 12px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.location-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 반경 설정 */
+.radius-input-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.radius-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: #e1e5e9;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.radius-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.radius-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.radius-value {
+  background: #667eea;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.setting-group small {
+  color: #999;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* 위치 설정 방법 */
+.location-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 25px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e1e5e9;
+}
+
+.method-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.method-section h4 {
+  color: #333;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.get-location-btn,
+.manual-set-btn {
+  background: linear-gradient(135deg, #2ed573 0%, #26d0ce 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.get-location-btn:hover,
+.manual-set-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 213, 115, 0.3);
+}
+
+.get-location-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 좌표 입력 */
+.coordinate-inputs {
+  display: flex;
+  gap: 15px;
+}
+
+.coordinate-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.coordinate-input label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.coordinate-field {
+  padding: 10px 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.coordinate-field:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 현재 설정된 위치 정보 */
+.current-location-info {
+  background: #f0f8ff;
+  border: 1px solid #bee5eb;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.current-location-info h4 {
+  color: #0c5460;
+  margin: 0 0 20px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.location-details {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #d1ecf1;
+}
+
+.location-details p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.location-details strong {
+  color: #0c5460;
+}
+
+.location-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirm-location-btn,
+.reset-location-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-location-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.confirm-location-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+}
+
+.reset-location-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.reset-location-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .location-settings {
+    padding: 20px;
+  }
+  
+  .location-methods {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .coordinate-inputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .location-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .confirm-location-btn,
+  .reset-location-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+

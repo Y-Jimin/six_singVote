@@ -1,0 +1,69 @@
+config:
+  target: 'http://localhost:5000'
+  phases:
+    - duration: 10
+      arrivalRate: 5
+      name: "초기 접속 단계 (10초간 초당 5명씩)"
+    - duration: 30
+      arrivalRate: 10
+      name: "투표 진행 단계 (30초간 초당 10명씩)"
+    - duration: 20
+      arrivalRate: 15
+      name: "피크 시간 (20초간 초당 15명씩)"
+    - duration: 10
+      arrivalRate: 5
+      name: "마무리 단계 (10초간 초당 5명씩)"
+  defaults:
+    headers:
+      'Content-Type': 'application/json'
+      'User-Agent': 'Artillery Load Test'
+
+scenarios:
+  - name: "투표 시스템 부하 테스트"
+    weight: 100
+    flow:
+      # 1. 투표 세션 조회
+      - get:
+          url: "/api/vote/session/active"
+          expect:
+            - statusCode: [200, 404]
+      
+      # 2. 투표 제출 (위치 정보 포함)
+      - post:
+          url: "/api/vote/submit"
+          json:
+            voteId: "{{ $randomString() }}"
+            choice: "{{ $randomInt(1, 3) }}"
+            userLat: "{{ $randomFloat(37.5, 37.6) }}"
+            userLng: "{{ $randomFloat(126.9, 127.0) }}"
+          expect:
+            - statusCode: [200, 400, 401, 403, 500]
+      
+      # 3. 투표 결과 조회
+      - get:
+          url: "/api/vote/results"
+          expect:
+            - statusCode: [200, 401, 500]
+      
+      # 4. 잠시 대기 (실제 사용자 행동 시뮬레이션)
+      - think: 2
+
+  - name: "관리자 기능 테스트"
+    weight: 10
+    flow:
+      # 관리자 로그인
+      - post:
+          url: "/api/auth/admin/login"
+          json:
+            password: "admin123"
+          expect:
+            - statusCode: [200, 401]
+      
+      # 투표 세션 목록 조회
+      - get:
+          url: "/api/vote/sessions"
+          expect:
+            - statusCode: [200, 401, 500]
+      
+      # 잠시 대기
+      - think: 1
